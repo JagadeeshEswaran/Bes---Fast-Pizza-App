@@ -1,7 +1,7 @@
 function CartOverview() {
   return (
-    <div>
-      <p>
+    <div className="bg-yellow-950 text-yellow-50 flex justify-between py-4 px-3 absolute w-[100%] bottom-0">
+      <p className="space-x-8">
         <span>2 pizzas</span>
         <span>$23.45</span>
       </p>

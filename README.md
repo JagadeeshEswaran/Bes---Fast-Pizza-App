@@ -894,39 +894,246 @@ const router = createBrowserRouter([
 
 ## STEP 6 : Setting Up Tailwind CSS
 
-- What is TailwindCSS ?
+### Introduction :
+
+- ### What is TailwindCSS ?
   ```
   "A Utility-First" CSS Framework packed with Utility classes like flex, text-center, rotate-90, etc..
   that can be composed to build any design, directly into our markup (HTML or JSX)
   ```
-- Utility-first CSS Approach :
+- ### Utility-first CSS Approach :
   ```
   Writing tiny css classes with one single purpose, and then combining them to build a Entire Layour or Atomic CSS
   ```
-- How to use TailwindCSS ?
+- ### How to use TailwindCSS ?
   ```
   In tailwindCSS, the classes are already written for us. So we're not gonna write any new CSS. But instead use some of tailwind's hundreds of classes.
   ```
-- Pros of TailwindCSS :
+- ### Pros of TailwindCSS :
 
   - We don't need to think about names of Classes
   - No need to jump between files to write markup and styles
-  - Immediately understand stylinh in any project that uses tailwind
+  - Immediately understand styling in any project that uses tailwind
   - Tailwind is a design system : Many design desicions have been taken for us like pre-defined colors, spacings and etc.., which makes UI looks better
   - Saves a lot of time, e.g. on responsive design
   - Docs and VS Code integration are great
 
-- Cons of TailwindCSS :
+- ### Cons of TailwindCSS :
 
   - Markup (HTML or JSX) looks vert unreadable, with lots of class names
   - We need to learn a lot of class names
   - We need to install and setup tailwind on each new project
   - We're giving up on "Vanilla CSS"
 
-### TailwindCSS - STEP 1 : Setting Up
+- ### TailwindCSS Vs Bootstrap
+
+  - #### Release Date: November 2017 vs. August 2011
+
+    (Note: TailwindCSS was released in November 2017, not 2018)
+
+  - #### Approach: Utility-first vs. Component-based
+
+    (TailwindCSS uses a utility-first approach, while Bootstrap follows a component-based approach)
+
+  - #### Customization: Highly customizable vs. Less customizable
+
+    (TailwindCSS offers greater flexibility in customization, while Bootstrap provides predefined components that are less flexible)
+
+  - #### Code cleanliness: Avoids bloating HTML template vs. Can lead to bloated HTML
+
+    (TailwindCSS promotes cleaner HTML with utility classes, while Bootstrap’s pre-built components can result in more bloated HTML code)
+
+  - #### Popular for: Flexibility vs. Pre-built responsiveness
+
+    (TailwindCSS is favored for its flexibility, while Bootstrap is popular for its pre-designed, responsive components)
+
+  - #### Bundle Size: Reduced file size using PurgeCSS vs. Larger file size by default
+
+    (TailwindCSS reduces the final bundle size by purging unused CSS, while Bootstrap typically has a larger default file size due to its comprehensive CSS)
+
+  - #### Better for: Projects that require more customization vs. Rapid prototyping or common layouts
+    (TailwindCSS excels in projects that need extensive customization, while Bootstrap is better for projects requiring rapid prototyping or standard layouts)
+
+- ### CSS Framework Comparison: Vanilla CSS vs Bootstrap vs TailwindCSS
+
+  This document compares the key features of **Vanilla CSS**, **Bootstrap**, and **Tailwind CSS**, helping you choose the best framework for your project.
+
+  | **Feature**          | **Vanilla CSS**                                   | **Bootstrap**                                           | **Tailwind CSS**                                            |
+  | -------------------- | ------------------------------------------------- | ------------------------------------------------------- | ----------------------------------------------------------- |
+  | **Release Date**     | 1996                                              | August 2011                                             | November 2017                                               |
+  | **Approach**         | Custom styles for every element                   | Component-based framework with predefined styles        | Utility-first framework with low-level utility classes      |
+  | **Customization**    | Fully customizable, but requires effort           | Less customizable, predefined components                | Highly customizable with utility classes                    |
+  | **Code Cleanliness** | Can be messy without organization                 | Can lead to bloated HTML and CSS                        | Keeps code clean by using utility classes                   |
+  | **Popular For**      | Custom web designs, small-to-medium projects      | Rapid prototyping, standard layouts, common UI patterns | Highly flexible, customizable designs                       |
+  | **Bundle Size**      | Minimal (depends on your CSS file size)           | Larger file size due to pre-built components            | Small bundle size (optimized with PurgeCSS)                 |
+  | **Learning Curve**   | Steep (requires understanding CSS basics)         | Low to medium (easy-to-use pre-built components)        | Medium to high (requires understanding of utility-first)    |
+  | **Flexibility**      | Full flexibility (control everything)             | Moderate flexibility (limited by components)            | High flexibility (complete control using utilities)         |
+  | **Responsiveness**   | Manual setup with media queries                   | Built-in responsive grid system                         | Achieved through utility classes, no built-in grid          |
+  | **Performance**      | Optimal (no external dependencies)                | Can be less performant due to large file size           | Excellent (optimized with PurgeCSS to remove unused styles) |
+  | **Common Use Cases** | Custom designs, complex UIs, tailored experiences | Prototyping, standard layouts, quick designs            | Custom web designs, flexible UIs, high customization        |
+
+  ***
+
+  #### Summary
+
+  - **Vanilla CSS**: Ideal for fully custom designs and complete control, but requires more time and effort.
+  - **Bootstrap**: Great for rapid prototyping with a set of pre-built components but may lead to bloat.
+  - **Tailwind CSS**: A utility-first framework providing flexibility and clean code, but requires a learning curve.
+
+  Each framework has its strengths depending on the project needs. Choose the one that best fits your goals and workflow.
+
+### TailwindCSS - Setup - Step 1 : Setting Up
 
 - Please visit TailwindCSS Docs for latest Installation Steps : https://tailwindcss.com/docs/installation
 - Once you land on the docs page, Click on Framwork Guide
 - Select Vite (Frameworks List), and Select Using React
-- Follow the Steps mentioned
+- Follow the Steps mentioned, then run npm run dev
 - Also visit : https://tailwindcss.com/docs/preflight, to know TailwindCSS auto reset on your project
+- Install TailwindCSS Extensions for VS Code
+  - 1. TailwindCSS IntelliSense - Gives Suggestion, Autocompletion and Equivalent Vanilla CSS
+  - Tailwind Prettier Extention - GitHub : https://github.com/tailwindlabs/prettier-plugin-tailwindcss
+
+### Setup - Step 2 : Working with Colors
+
+- Read TailwindCSS doc - https://tailwindcss.com/docs/customizing-colors
+- Ex.: Colors Palette, Text color, Backgrounf Color, Typography - Font Size, Font Weight, etc.
+
+  ```js
+  import React from "react";
+  import { Link } from "react-router-dom";
+  import SearchOrder from "../features/order/SearchOrder";
+
+  const Header = () => {
+    return (
+      <header className="w-100 flex h-16 items-center justify-between bg-yellow-500">
+        <Link to="/">Fast Pizza Co.</Link>
+
+        <SearchOrder />
+
+        <p>Besant</p>
+      </header>
+    );
+  };
+
+  export default Header;
+  ```
+
+- Custom Sizing and Properties
+
+  ```js
+  function Home() {
+    return (
+      <div>
+        <h1 className="text-center text-[50px] font-[900] capitalize">
+          The best pizza.
+          <br />
+          <span className="text-yellow-500">
+            Straight out of the oven, straight to you.
+          </span>
+        </h1>
+      </div>
+    );
+  }
+
+  export default Home;
+  ```
+
+  - Usage Tailwind Classes in index.html
+
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Vite + React</title>
+    </head>
+    <body class="bg-stone-100 text-stone-700">
+      <div id="root"></div>
+      <script type="module" src="/src/main.jsx"></script>
+    </body>
+  </html>
+  ```
+
+- Box Modal - Margin & Spacing
+
+  - Ex.1: Header.jsx
+
+    ```js
+    import React from "react";
+    import { Link } from "react-router-dom";
+    import SearchOrder from "../features/order/SearchOrder";
+    import Username from "../features/user/Username";
+
+    const Header = () => {
+      return (
+        <header className="w-100 flex items-center justify-between border-b-8 border-yellow-950/50 bg-yellow-500 p-4 px-4 uppercase">
+          <Link to="/" className="tracking-widest">
+            Fast Pizza Co.
+          </Link>
+
+          <SearchOrder />
+        </header>
+      );
+    };
+
+    export default Header;
+    ```
+
+  - Ex.2: Home.jsx
+
+    ```js
+    import CreateUser from "../features/user/CreateUser";
+
+    function Home() {
+      return (
+        <div className="my-10 text-center">
+          <h1 className="mb-12 text-center text-[40px] font-semibold capitalize">
+            The best pizza.
+            <br />
+            <span className="text-yellow-500">
+              Straight out of the oven, straight to you.
+            </span>
+          </h1>
+
+          <CreateUser />
+        </div>
+      );
+    }
+
+    export default Home;
+    ```
+
+- Responsive Designs
+
+  - Tailwind comes with 5 Break Points, which are min-width media queries
+  - sm: 640px, md: 768px, lg: 1024px, xl: 1280px, 2xl: 1536px
+  - All classes are mobile-first design.
+  - i.e : Once the responsive classes are given, the matching designs will applied to smaller sizes, and responsive classes will get applied to greater break points
+
+    - Ex.1: Home.jsx
+
+      ```js
+      import CreateUser from "../features/user/CreateUser";
+
+      function Home() {
+        return (
+          <div className="my-10 text-center sm:my-48">
+            <h1 className="mb-12 text-center text-[40px] font-semibold capitalize">
+              The best pizza.
+              <br />
+              <span className="text-yellow-500">
+                Straight out of the oven, straight to you.
+              </span>
+            </h1>
+
+            <CreateUser />
+          </div>
+        );
+      }
+
+      export default Home;
+      ```
+
+    - Ex.2:
